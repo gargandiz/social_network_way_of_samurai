@@ -7,7 +7,7 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {Route, Routes} from 'react-router-dom';
+import {Route, Routes, Navigate} from 'react-router-dom';
 
 
 
@@ -18,6 +18,7 @@ function App() {
             <Navbar/>
             <div className='app-wrapper-content'>
             <Routes>
+                <Route path='/' element={<Navigate to={"/profile"}/>}/>
                 <Route path='/profile' element={<Profile/>}/>
                 <Route path='/dialogs' element={<Dialogs/>}/>
                 <Route path='/news' element={<News/>}/>
