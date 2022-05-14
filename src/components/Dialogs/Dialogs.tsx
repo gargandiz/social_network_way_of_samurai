@@ -1,29 +1,8 @@
 import React from 'react';
 import classes from "./Dialogs.module.css"
-import {NavLink} from "react-router-dom";
+import DialogsItem from "./DialogsItem/DialogsItem";
+import Message from "./Message/Message";
 
-type DialogsItemPropsType = {
-    name: string
-    id: number
-}
-
-type MassagePropsType = {
-    massage: string
-}
-
-const DialogsItem = (props: DialogsItemPropsType) => {
-    return (
-        <div className={classes.dialog + " " + classes.active}>
-            <NavLink to={"/dialogs/" + props.id}>{props.name}</NavLink>
-        </div>
-    )
-}
-
-const Massage = (props: MassagePropsType) => {
-    return (
-        <div className={classes.massage}>{props.massage}</div>
-    )
-}
 
 const Dialogs = () => {
 
@@ -35,18 +14,18 @@ const Dialogs = () => {
         {id: 5, name: "Vovan"}
     ]
 
-    let massages = [
-        {id: 1, massage: "Hi",},
-        {id: 2, massage: "How do you do?"},
-        {id: 3, massage: "I'm glad to see you"},
-        {id: 4, massage: "I have a sore throat"},
-        {id: 5, massage: "Let's have lunch"}
+    let messages = [
+        {id: 1, message: "How kind of you"},
+        {id: 2, message: "How do you do?"},
+        {id: 3, message: "I'm glad to see you"},
+        {id: 4, message: "I have a sore throat"},
+        {id: 5, message: "Let's have lunch"}
     ]
 
     let dialogsElements = dialogs.map(d => <DialogsItem name={d.name} id={d.id} />)
-    let massagesElements = massages.map((m) => {
+    let messagesElements = messages.map((m) => {
         return (
-            <Massage massage={m.massage} />
+            <Message message={m.message} />
         )
     })
 
@@ -55,8 +34,8 @@ const Dialogs = () => {
             <div className={classes.dialogsItem}>
                 { dialogsElements }
             </div>
-            <div className={classes.massages}>
-                { massagesElements }
+            <div className={classes.messages}>
+                { messagesElements }
             </div>
         </div>
     )
